@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import logo from "../../assets/images/logo2.png"
+import logo from "../../assets/images/logo.png"
 
 class Title extends React.Component {
     render () {
