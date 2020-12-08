@@ -1,3 +1,6 @@
+// Place all the styles related to the Tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
@@ -15,35 +18,16 @@ body {
   text-align: center;
 }
 
-.App-logo {
-  height: 20vmin;
-  pointer-events: none;
-  margin: 40px;
-}
-
-
-.App-header {
-  background-image: url("background.jpg");
-  background-size: cover;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  padding-bottom: 100px;
-}
-
-.collapse-content .fa.fa-heart:hover {
-  color: #f44336 !important;
-}
-.collapse-content .fa.fa-share-alt:hover {
-  color: #0d47a1 !important;
-}
-
 #login {
   background-image: url("login.jpg");
   background-size: cover;
+}
+
+.wrap-input {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  text-align:center;
+  padding-bottom:2px;
 }
 
 .wrap-input{
@@ -63,4 +47,10 @@ body {
 input {
   outline: 0;
   border-width: 0
+}
+
+.main {
+  background-image: url("main.png");
+  background-size: cover;
+  min-height: 94.5vh;
 }

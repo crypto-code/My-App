@@ -9,20 +9,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+        history.pushState(null, null, document.URL);
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, document.URL);
+        });
+    </script>
   </head>
   <body class="text-center" id="body">
-    <%= react_component("Title", {menuItems:[], error: @error, login:true, header: true}) %>
+    <%= react_component("Title", {menuItems:[
+      {id:"1", name:"LOGOUT", url: url_for(controller: "welcome", action: "logout")}],
+                                  error: @error, login:false, header: false, tasks: @tasks}) %>
   </body>
-<script>
-    $(function() {
-        setTimeout(function() {
-            const jumpPos = $('#login').offset().top;
-            if($(document).scrollTop() <= jumpPos)
-                $('html, body').animate({
-                    scrollTop: jumpPos
-                }, 1000);
-        }, 1500);
 
-    });
-</script>
 </html>
