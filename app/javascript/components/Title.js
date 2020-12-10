@@ -14,7 +14,7 @@ class Title extends React.Component {
             <div className="navbar-collapse collapse">
                 <ul className="nav navbar-nav ml-auto" style={{fontWeight: "bolder", fontSize:"x-large"}}>
                     {this.props.menuItems.map((item) =>
-                        <li className="nav-item active" style={{marginRight: "50px"}}>
+                        <li key={item.id} className="nav-item active" style={{marginRight: "50px"}}>
                             <a className="nav-link" id={item.id} style={{color: "darkblue"}} href={item.url}>{item.name}</a>
                         </li>)}
                 </ul>
@@ -47,6 +47,6 @@ Title.propTypes = {
     menuItems: PropTypes.array,
     error: PropTypes.string,
     login: PropTypes.bool,
-    tasks: PropTypes.array
+    tasks: PropTypes.object
 };
 export default Title

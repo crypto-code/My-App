@@ -4,6 +4,7 @@ class TasksController < ApplicationController
       redirect_to(root_url)
     end
     @tasks = $user.tasks
+    @flag = $user.tasks.group_by{|t| t.flag}
   end
 
   def show
