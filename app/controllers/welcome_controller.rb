@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
   $error_msg = ""
   def index
     @error = $error_msg
-    if $logged_in
+    if $logged_in and $user != nil
       redirect_to(controller: :tasks, action: :index)
     else
       render("index.html.erb")

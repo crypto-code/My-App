@@ -1,13 +1,19 @@
 class TasksController < ApplicationController
   def index
-    unless $logged_in
+    if !$logged_in or $user == nil
       redirect_to(root_url)
+    else
+      @tasks = $user.tasks.group_by{|t| t.flag}
+      @flags = $user.tasks.distinct.pluck(:flag)
     end
-    @tasks = $user.tasks
-    @flag = $user.tasks.group_by{|t| t.flag}
   end
 
   def show
-
+    @task = Task.find(params[:id])
+    @time = ""
+    if @task[:time] != nil
+      @time = @task[:time].strftime("%I:%M %p")
+    end
+    puts
   end
 end

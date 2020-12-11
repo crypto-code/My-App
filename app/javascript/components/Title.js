@@ -1,8 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import logo from "../../assets/images/logo.png"
-import Login from "./LoginForm"
-import Main from "./Main";
 
 class Title extends React.Component {
     render () {
@@ -13,6 +11,12 @@ class Title extends React.Component {
           <h2>TODO App</h2>
             <div className="navbar-collapse collapse">
                 <ul className="nav navbar-nav ml-auto" style={{fontWeight: "bolder", fontSize:"x-large"}}>
+                    <li className="nav-item active" style={{marginRight: "20px"}}>
+                        <input className="nav-link form-control" style={{color:"black", width:"200px"}}/>
+                    </li>
+                    <li className="nav-item active" style={{marginRight: "60px"}}>
+                        <button type="submit" className="nav-link btn btn-primary shadow" style={{width:"100px"}}>Search</button>
+                    </li>
                     {this.props.menuItems.map((item) =>
                         <li key={item.id} className="nav-item active" style={{marginRight: "50px"}}>
                             <a className="nav-link" id={item.id} style={{color: "darkblue"}} href={item.url}>{item.name}</a>
@@ -20,18 +24,12 @@ class Title extends React.Component {
                 </ul>
             </div>
         </nav>
-          <div className="App">
-              {this.props.login
+              {this.props.head
                   ? <header className="App-header">
                       <h1 style={{fontSize:"100px"}}>Welcome to My TO-DO App</h1>
                       <img src={logo} className="App-logo" alt="logo" />
                     </header>
                   : <div/>}
-
-              {this.props.login
-                  ? <Login error={this.props.error}/>
-                  :<Main tasks={this.props.tasks}/> }
-          </div>
           <script>
               history.pushState(null, null, document.URL);
               window.addEventListener('popstate', function () {
@@ -45,8 +43,6 @@ class Title extends React.Component {
 
 Title.propTypes = {
     menuItems: PropTypes.array,
-    error: PropTypes.string,
-    login: PropTypes.bool,
-    tasks: PropTypes.object
+    head: PropTypes.bool,
 };
 export default Title

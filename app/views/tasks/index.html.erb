@@ -14,12 +14,19 @@
         window.addEventListener('popstate', function () {
             history.pushState(null, null, document.URL);
         });
+        window.addEventListener('load', function() {
+            var els = document.getElementsByClassName("flag-nav");
+            Array.prototype.forEach.call(els, function (el) {
+                el.onclick = function() {
+                    let e = document.getElementById(this.innerHTML);
+                    e.scrollIntoView({behavior: "smooth", block: "center"})
+                }
+            })})
     </script>
   </head>
   <body class="text-center" id="body">
-    <%= react_component("Title", {menuItems:[
-      {id:"1", name:"LOGOUT", url: url_for(controller: "welcome", action: "logout")}],
-                                  error: @error, login:false, header: false, tasks: @flag}) %>
+  <%=react_component("Title", {menuItems:[
+    {id:"1", name:"LOGOUT", url: url_for(controller: "welcome", action: "logout")}], head: false})%>
+    <%=react_component("Main", {tasks: @tasks, flags: @flags}) %>
   </body>
-
 </html>

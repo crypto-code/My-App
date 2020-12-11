@@ -11,7 +11,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </head>
   <body class="text-center" id="body">
-    <%= react_component("Title", {menuItems:[], error: @error, login:true, header: true}) %>
+  <div className="App">
+    <%= react_component("Title", {menuItems:[], head: true}) %>
+    <%= react_component("LoginForm", {error: @error}) %>
+  </div>
   </body>
 <script>
     $(function() {
