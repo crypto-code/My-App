@@ -26,9 +26,9 @@ class Show extends React.Component {
                         </h1>
                       </div>
                         <div style={{textAlign:"right"}}>
-                          <a className="btn btn-primary" style={{marginInline:"10px", width:"10rem", fontSize:"20px"}} href="/">Back</a>
-                          <a className="btn btn-primary" style={{marginInline:"10px", width:"10rem", fontSize:"20px"}} href="#">Edit</a>
+                          <a className="btn btn-primary" style={{marginInline:"10px", width:"10rem", fontSize:"20px"}} href={this.props.task["id"]+ "/edit"}>Edit</a>
                           <a className="btn btn-primary" style={{marginInline:"10px", width:"10rem", fontSize:"20px"}} href="#">Delete</a>
+                          <a className="btn btn-primary" style={{marginInline:"10px", width:"10rem", fontSize:"20px"}} href="/">Back</a>
                         </div>
                     </div>
                   </div>
