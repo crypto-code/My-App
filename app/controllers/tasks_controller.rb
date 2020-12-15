@@ -6,32 +6,46 @@ class TasksController < ApplicationController
     end
 
     if $user != nil
-      @tasks = Task.where(:user_id => $user.id).group_by(&:flag)
+      @tasks = Task.where(:user_id => $user.id).order("deadline, time").group_by(&:flag)
       @flags = $user.tasks.distinct.pluck(:flag)
     end
   end
 
   def show
-    @task = Task.find(params[:id])
-    @time = ""
-    if @task[:time] != nil
-      @time = @task[:time].strftime("%I:%M")
+    if !$logged_in or $user == nil
+      redirect_to(root_url)
+    end
+    if $user != nil
+      @task = Task.find(params[:id])
+      if @task.user_id != $user.id
+        redirect_to(root_url)
+      end
+      @time = ""
+      if @task[:time] != nil
+        @time = @task[:time].strftime("%I:%M")
+      end
     end
   end
 
   def edit
-    @task = Task.find(params[:id])
-    @time = ""
-    if @task[:time] != nil
-      @time = @task[:time].strftime("%H:%M")
-      @date = @task[:deadline].strftime("%Y-%m-%d")
-      @datetime = @date + "T" + @time
-      puts @datetime
-    else
-      @date = @task[:deadline].strftime("%Y-%m-%d")
-      @datetime = ""
+    if !$logged_in or $user == nil
+      redirect_to(root_url)
     end
-    puts @datetime
+    @task = Task.find(params[:id])
+    if $user != nil
+      if @task.user_id != $user.id
+        redirect_to(root_url)
+      end
+      @time = ""
+      if @task[:time] != nil
+        @time = @task[:time].strftime("%H:%M")
+        @date = @task[:deadline].strftime("%Y-%m-%d")
+        @datetime = @date + "T" + @time
+      else
+        @date = @task[:deadline].strftime("%Y-%m-%d")
+        @datetime = ""
+      end
+    end
   end
 
   def update
@@ -42,6 +56,31 @@ class TasksController < ApplicationController
       render json: @task.errors
     end
 
+  end
+
+  def new
+    if !$logged_in or $user == nil
+      redirect_to(root_url)
+    end
+    if $user != nil
+      @user_id = $user.id
+    end
+  end
+
+  def create
+    @task = Task.new(task_params)
+    if @task.save
+      render json: @task
+    else
+      render json: @task.errors
+    end
+
+  end
+
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+    render json: @task
   end
 
   private

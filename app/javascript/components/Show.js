@@ -1,6 +1,36 @@
 import React from "react"
 import PropTypes from "prop-types"
 class Show extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: 0,
+      title: "",
+      flag: ""
+    }
+    this.confirmDelete = this.confirmDelete.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleDelete(id, flag) {
+    fetch(`http://localhost:3000/tasks/${id}`,
+        {
+          method: 'DELETE',
+          headers: {'Content-Type': 'application/json'}
+        }).then((response) => {
+      setTimeout(function () {
+        window.location.href = "/";
+      }, 1000)
+    })
+  }
+
+  confirmDelete(title, id, flag) {
+    this.setState({
+      id: id,
+      title: title,
+      flag: flag
+    })
+  }
   render () {
     return (
       <React.Fragment>
@@ -25,9 +55,10 @@ class Show extends React.Component {
                             : "  N/A"}
                         </h1>
                       </div>
-                        <div style={{textAlign:"right"}}>
+                        <div style={{textAlign:"right", color:"white"}}>
                           <a className="btn btn-primary" style={{marginInline:"10px", width:"10rem", fontSize:"20px"}} href={this.props.task["id"]+ "/edit"}>Edit</a>
-                          <a className="btn btn-primary" style={{marginInline:"10px", width:"10rem", fontSize:"20px"}} href="#">Delete</a>
+                          <a className="btn btn-primary" style={{marginInline:"10px", width:"10rem", fontSize:"20px"}} data-toggle="modal" data-target="#confirmModal"
+                             onClick={() => this.confirmDelete(this.props.task["title"], this.props.task["id"], this.props.task["flag"])} >Delete</a>
                           <a className="btn btn-primary" style={{marginInline:"10px", width:"10rem", fontSize:"20px"}} href="/">Back</a>
                         </div>
                     </div>
@@ -35,6 +66,30 @@ class Show extends React.Component {
                 </div>
               </div>
             </div>
+        </div>
+        <div className="modal fade" id="confirmModal" tabIndex="-1" role="dialog" aria-labelledby="confirmModalLabel"
+             aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered" role="document" style={{width:"60rem"}}>
+            <div className="modal-content">
+              <div className="modal-header">
+                <h2 className="modal-title" id="confirmModalLabel">Confirmation Dialog</h2>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body" style={{fontSize:"x-large"}}>
+                <p>
+                  Are you sure you want to delete<br/>
+                  <b>Task ID</b>: {this.state.id}<br/>
+                  <b>Title</b>: {this.state.title}
+                </p>
+              </div>
+              <div className="modal-footer" style={{fontSize:"x-large"}}>
+                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-danger" data-dismiss="modal" onClick={() => this.handleDelete(this.state.id, this.state.flag)}>Confirm Delete</button>
+              </div>
+            </div>
+          </div>
         </div>
       </React.Fragment>
     );

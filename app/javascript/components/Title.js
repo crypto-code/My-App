@@ -19,7 +19,7 @@ class Title extends React.Component {
                     </li>
                     {this.props.menuItems.map((item) =>
                         <li key={item.id} className="nav-item active" style={{marginRight: "50px"}}>
-                            <a className="nav-link" id={item.id} style={{color: "darkblue"}} href={item.url}>{item.name}</a>
+                            <a className="nav-link" style={{color: "darkblue"}} href={item.url}>{item.name}</a>
                         </li>)}
                 </ul>
             </div>
