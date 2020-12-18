@@ -23,7 +23,7 @@ body {
 
 
 .App-header {
-  background-image: url("background.jpg");
+  background-image: image_url("background.jpg");
   background-size: cover;
   min-height: 100vh;
   display: flex;
@@ -42,7 +42,7 @@ body {
 }
 
 #login, #create {
-  background-image: url("login.jpg");
+  background-image: image_url("login.jpg");
   background-size: cover;
 }
 
