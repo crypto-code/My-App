@@ -13,18 +13,32 @@
   <body class="text-center" id="body">
   <div className="App">
     <%= react_component("Title", {menuItems:[], head: true}) %>
-    <%= react_component("CreateAcc", {error: @error}) %>
+    <%= react_component("CreateAcc", {error: @error, success: @success}) %>
   </div>
   </body>
 <script>
     $(function() {
         setTimeout(function() {
+            let success = '<%=@success %>'
             const jumpPos = $('#login').offset().top;
-            if($(document).scrollTop() <= jumpPos)
+            if($(document).scrollTop() <= jumpPos && success === "")
                 $('html, body').animate({
                     scrollTop: jumpPos
                 }, 1000);
         }, 1500);
     });
+    window.onload = function () {
+        let success = '<%=@success %>'
+        if (success !== "") {
+            setTimeout(function() {
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 1000);
+            }, 500);
+            setTimeout(function () {
+                window.location.href = "/";
+            }, 2000)
+        }
+    }
 </script>
 </html>

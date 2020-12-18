@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
   skip_before_action :verify_authenticity_token
   $error_msg = ""
+  $success= ""
   def index
     @error = $error_msg
     if $logged_in and $user != nil
@@ -32,12 +33,14 @@ class WelcomeController < ApplicationController
 
   def create
     @error = $error_msg
+    @success = $success
     if @error != ""
       render("create.html.erb", anchor: "login")
     else
       render("create.html.erb")
     end
     $error_msg = ""
+    $success = ""
   end
 
   def new
@@ -58,8 +61,9 @@ class WelcomeController < ApplicationController
       if @user.save
         $user = User.find_by username: @username, password: @password
         $error_msg = ""
+        $success = "User Created Successfully"
         $logged_in = true
-        redirect_to(controller: :tasks, action: :index)
+        redirect_to(controller: :welcome, action: :create)
       else
         $error_msg = "User Creation Error"
         redirect_to(controller: :welcome, action: :create)

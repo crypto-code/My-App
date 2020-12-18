@@ -2,8 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import logo from "../../assets/images/logo.png"
 
-console.log(React.version);
-
 class Title extends React.Component {
     render () {
     return (
@@ -33,7 +31,7 @@ class Title extends React.Component {
             </div>
         </nav>
               {this.props.head
-                  ? <header className="App-header">
+                  ? <header className="App-header" id="head">
                       <h1 style={{fontSize:"100px"}}>Welcome to My TO-DO App</h1>
                       <img src={logo} className="App-logo" alt="logo" />
                     </header>

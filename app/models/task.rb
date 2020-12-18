@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
   validates :user_id, presence: true, numericality: { only_integer: true }
-  validates :title, presence: true,
+  validates :title, presence: true, uniqueness: true,
            length: {minimum: 5, maximum: 60}
   validates :flag, presence: true,
            length: {minimum: 2}

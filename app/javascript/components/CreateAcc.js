@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 class CreateAcc extends React.Component {
   constructor(props) {
     super(props);
-    if (this.props.error !== "") {
+    if (this.props.error !== "" || this.props.success !== "") {
       if (!window.location.href.includes("#create")) {
         window.location = window.location.href + "#create"
       }
@@ -21,7 +21,15 @@ class CreateAcc extends React.Component {
                     <h1 className="card-title" style={{fontSize:"50px"}}>Create Account</h1>
                     <form action="/welcome/new" method="POST">
                       {this.props.error !== ""
-                      & <p className="text-danger" id="error">{this.props.error}</p>}
+                      ? <div className="alert alert-danger" role="alert" id="success">
+                            {this.props.error}
+                          </div>
+                      : <div/>}
+                      {this.props.success !== ""
+                      ? <div className="alert alert-success" role="alert" id="success">
+                            {this.props.success}
+                          </div>
+                      : <div/>}
                       <div className="wrap-input">
                         <input type="text" placeholder="Username" name="user" style={{fontSize:"x-large", width:"100%"}} required/>
                       </div>
@@ -45,6 +53,7 @@ class CreateAcc extends React.Component {
 }
 
 CreateAcc.propTypes = {
-  error: PropTypes.string
+  error: PropTypes.string,
+  success: PropTypes.string
 };
 export default CreateAcc
