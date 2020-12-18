@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   post 'welcome/login'
   get 'welcome/logged'
   get 'welcome/logout'
+  get 'welcome/create'
+  post 'welcome/new'
 
   resources :tasks
 

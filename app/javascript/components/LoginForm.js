@@ -22,6 +22,9 @@ class LoginForm extends React.Component {
                     <div className="wrap-input">
                       <input type="password" placeholder="Password" name="pass" style={{fontSize:"x-large"}} required/>
                     </div>
+                      <div style={{marginBottom:"20px", fontSize:"20px"}}>
+                        <a href="/welcome/create">Create New Account</a>
+                      </div>
                       <button type="submit" className="btn btn-primary" style={{fontSize:"x-large"}}>Login</button>
                     </form>
                 </div>

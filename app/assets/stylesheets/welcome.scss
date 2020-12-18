@@ -41,14 +41,12 @@ body {
   color: #0d47a1 !important;
 }
 
-#login {
+#login, #create {
   background-image: url("login.jpg");
   background-size: cover;
 }
 
 .wrap-input{
-  margin-top: 30px;
-  margin-bottom: 50px;
   text-align:center;
   padding-bottom:2px;
   background: /* gradient can be an image */

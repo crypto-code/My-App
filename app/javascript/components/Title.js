@@ -2,6 +2,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import logo from "../../assets/images/logo.png"
 
+console.log(React.version);
+
 class Title extends React.Component {
     render () {
     return (
@@ -11,12 +13,18 @@ class Title extends React.Component {
           <h2>TODO App</h2>
             <div className="navbar-collapse collapse">
                 <ul className="nav navbar-nav ml-auto" style={{fontWeight: "bolder", fontSize:"x-large"}}>
-                    <li className="nav-item active" style={{marginRight: "20px"}}>
+                    {this.props.search
+                    ? <li className="nav-item active" style={{marginRight: "20px"}}>
                         <input className="nav-link form-control" style={{color:"black", width:"200px"}}/>
                     </li>
-                    <li className="nav-item active" style={{marginRight: "60px"}}>
+                    : <div/>}
+
+                    {this.props.search
+                    ? <li className="nav-item active" style={{marginRight: "60px"}}>
                         <button type="submit" className="nav-link btn btn-primary shadow" style={{width:"100px"}}>Search</button>
                     </li>
+                    : <div/> }
+
                     {this.props.menuItems.map((item) =>
                         <li key={item.id} className="nav-item active" style={{marginRight: "50px"}}>
                             <a className="nav-link" style={{color: "darkblue"}} href={item.url}>{item.name}</a>
@@ -44,5 +52,6 @@ class Title extends React.Component {
 Title.propTypes = {
     menuItems: PropTypes.array,
     head: PropTypes.bool,
+    search: PropTypes.bool
 };
 export default Title
