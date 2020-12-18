@@ -1,4 +1,4 @@
-# README
+# My TO-DO App
 
 **Assignment By**: Atin Sakker Hussain (A0225782Y)
 
