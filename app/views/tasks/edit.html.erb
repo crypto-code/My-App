@@ -19,7 +19,7 @@
   <body class="text-center" id="body">
   <div class="App">
   <%=react_component("Title", {menuItems:[
-    {id:"1", name:"LOGOUT", url: url_for(controller: "welcome", action: "logout")}], head: false})%>
+    {id:"1", name:"LOGOUT", url: url_for(controller: "welcome", action: "logout"), image: true, img: asset_path("logout.png")}], head: false})%>
   <%=react_component("Edit", {task: @task, time: @time, date: @date, datetime:@datetime}) %>
   </div>
   </body>

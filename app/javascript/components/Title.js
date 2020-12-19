@@ -11,21 +11,14 @@ class Title extends React.Component {
           <h2>TODO App</h2>
             <div className="navbar-collapse collapse">
                 <ul className="nav navbar-nav ml-auto" style={{fontWeight: "bolder", fontSize:"x-large"}}>
-                    {this.props.search
-                    ? <li className="nav-item active" style={{marginRight: "20px"}}>
-                        <input className="nav-link form-control" style={{color:"black", width:"200px"}}/>
-                    </li>
-                    : <div/>}
-
-                    {this.props.search
-                    ? <li className="nav-item active" style={{marginRight: "60px"}}>
-                        <button type="submit" className="nav-link btn btn-primary shadow" style={{width:"100px"}}>Search</button>
-                    </li>
-                    : <div/> }
 
                     {this.props.menuItems.map((item) =>
-                        <li key={item.id} className="nav-item active" style={{marginRight: "50px"}}>
-                            <a className="nav-link" style={{color: "darkblue"}} href={item.url}>{item.name}</a>
+                        <li key={item.id} className="nav-item active" style={{marginRight: "30px"}}>
+                            <a className="nav-link" style={{color: "darkblue"}} href={item.url}>{item.name}
+                            {item.image
+                            ?  <img src={item.img} height="45" className="d-inline-block" style={{marginInline:"10px"}} alt=""/>
+                            : <div/>}
+                            </a>
                         </li>)}
                 </ul>
             </div>
@@ -49,7 +42,6 @@ class Title extends React.Component {
 
 Title.propTypes = {
     menuItems: PropTypes.array,
-    head: PropTypes.bool,
-    search: PropTypes.bool
+    head: PropTypes.bool
 };
 export default Title
