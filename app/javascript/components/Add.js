@@ -46,7 +46,7 @@ class Add extends React.Component {
   }
 
   handleCreate(task) {
-    fetch('http://localhost:3000/tasks', {
+    fetch('/tasks', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

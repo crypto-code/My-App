@@ -27,7 +27,7 @@ class Edit extends React.Component {
   }
 
   handleUpdate(task){
-    fetch(`http://localhost:3000/tasks/${task.id}`,
+    fetch(`/tasks/${task.id}`,
      {
           method: 'PUT',
           body: JSON.stringify({task: task}),

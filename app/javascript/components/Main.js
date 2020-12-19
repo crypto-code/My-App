@@ -16,7 +16,7 @@ class Main extends React.Component {
     }
 
     handleDelete(id, flag) {
-        fetch(`http://localhost:3000/tasks/${id}`,
+        fetch(`/tasks/${id}`,
             {
                     method: 'DELETE',
                     headers: {'Content-Type': 'application/json'}
