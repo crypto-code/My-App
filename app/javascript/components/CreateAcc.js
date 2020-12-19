@@ -39,6 +39,9 @@ class CreateAcc extends React.Component {
                       <div className="wrap-input">
                         <input type="password" placeholder="Confirm Password" name="confirm-pass" style={{fontSize:"x-large", width:"100%"}} required/>
                       </div>
+                      <div style={{marginBottom:"20px", fontSize:"20px"}}>
+                        <a href="/">Already have an Account</a>
+                      </div>
                       <button type="submit" className="btn btn-primary" style={{fontSize:"x-large"}}>Create</button>
                     </form>
                   </div>

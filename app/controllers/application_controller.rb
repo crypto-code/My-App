@@ -6,4 +6,5 @@ class ApplicationController < ActionController::Base
   def clear_active_record_query_cache
     ActiveRecord::Base.connection.clear_query_cache
   end
+
 end
