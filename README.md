@@ -3,6 +3,7 @@
 **Assignment By**: Atin Sakker Hussain (A0225782Y)
 
 This website is helps you manage your tasks easily, with an easy to use but elegant interface designed using Rails and a backend implemented using Rails.
+A working version of this application is hosted on [Heroku](https://my-app-a0225782y.herokuapp.com/). 
 
 ## Versions
 - Ruby 2.6.3
@@ -28,4 +29,22 @@ A user once logged in, is taken to the main page where all the tasks are shown, 
 
 ![Use Case](assets/Use%20Case.png)
 
-## -----TO BE CONTINUED-----
+## User Manual
+
+On entry you are greeted by a welcome screen which scrolls down to reveal a login form. You can then choose to login with an existing or create a new account by going to the registration page.
+
+![Login and SignUp](assets/Login&Signup.png)
+
+Once logged in you are redirected to the index page where all tasks are shown grouped by flags and ordered by their deadlines. You can view the deadline by hovering over the task title and you can directly navigate to a flag by clicking on the appropriate flag shown on the sidebar.
+
+![index](assets/index.png)
+
+Click the “+” sign beside the title to add a new task. You will be taken to another page where you can enter all the necessary info, description and time are optional. The title must be unique with minimum 5 characters and a maximum of 60 characters. The flag should have a minimum of 2 characters and the description if present should have minimum of 10 characters.
+
+![add](assets/add.png)
+
+In the index page, each task has three option Show, Edit and Delete. The former two options will take you to their respective pages while the Delete option will open up a confirmation dialog. The Edit and Delete options are also accessible through the Show page.
+
+![pages](assets/pages.png)
+
+# THE END
