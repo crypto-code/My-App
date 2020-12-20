@@ -47,4 +47,6 @@ In the index page, each task has three option Show, Edit and Delete. The former 
 
 ![pages](assets/pages.png)
 
-# THE END
+<h1 align="center">
+THE END
+</h1>

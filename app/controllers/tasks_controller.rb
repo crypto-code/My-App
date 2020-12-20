@@ -7,7 +7,7 @@ class TasksController < ApplicationController
 
     if $user != nil
       @tasks = Task.where(:user_id => $user.id).order("deadline, time").group_by(&:flag)
-      @flags = $user.tasks.distinct.pluck(:flag)
+      @flags = @tasks.keys
     end
   end
 
