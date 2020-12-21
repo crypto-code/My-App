@@ -77,6 +77,21 @@ class Edit extends React.Component {
     } else {
       date = document.getElementById("date").value;
     }
+    let today = new Date();
+    let days = new Date(date) - today;
+    if (datetime != null){
+      days = new Date(datetime) - today;
+    }
+    if(days < 0){
+      console.log(days)
+      let error = document.getElementById("error_list");
+      error.innerHTML = "";
+      let li = document.createElement("li");
+      li.innerText = "Deadline: Date has passed";
+      error.appendChild(li);
+      document.getElementById("error").hidden = false
+      return
+    }
     let id = this.props.task["id"]
     let task = {id: id, user_id: user_id, title: title, description: description, deadline: date, time: datetime, flag: flag}
     this.handleUpdate(task)

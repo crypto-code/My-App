@@ -1,18 +1,35 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-let Mainlist = ""
-
 class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             id: 0,
             title: "",
-            flag: ""
+            flag: "",
+
         }
         this.confirmDelete = this.confirmDelete.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+
+        Object.keys(this.props.tasks).map((key, index) => {
+            this.props.tasks[key].map((item) => {
+                let today = new Date();
+                let dur;
+                if (item["time"] != null){
+                    let time = item["time"].split("T")[1].split(".")[0]
+                    dur = new Date(item["deadline"]+"T"+time) - today;
+                } else {
+                    let time = "08:00:00"
+                    dur = new Date(item["deadline"]+"T"+time) - today;
+                }
+                setTimeout(function() {
+                    $("#" + item["id"] + "-alert").toast('show');
+                }, dur);
+                console.log(JSON.stringify(item["time"])+ dur)
+            })
+        })
     }
 
     handleDelete(id, flag) {
@@ -45,9 +62,44 @@ class Main extends React.Component {
         })
     }
 
+    handleChange(id) {
+        window.location.href = "/tasks/"+id+"/edit"
+    }
+
     render () {
     return (
       <React.Fragment>
+          <div aria-live="polite" aria-atomic="true" style={{position:"relative", zIndex:"3000000"}}>
+              <div style={{position:"absolute", top:"60px", right:"20px", width:"fit-content"}}>
+                  {Object.keys(this.props.tasks).map((key, index) =>
+                      this.props.tasks[key].map((item) =>
+                          <div key={item["id"]} id={item["id"]+"-alert"} className="toast shadow-lg" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false"
+                               style={{width:"20rem"}}>
+                              <div className="toast-header" style={{fontSize:"larger"}}>
+                                  <span className="mr-auto" style={{fontWeight:"bolder"}}>Task Alert</span>
+                                  {item["time"] != null
+                                  ? <span className="toast-time">{item["deadline"] + " " + item["time"].split("T")[1].split(".")[0]}</span>
+                                  : <span className="toast-time">{item["deadline"] + " 8:00:00"}</span>}
+                              </div>
+                              <div className="toast-body" style={{fontSize:"large"}}>
+                                  Time's Up <br/>
+                                  <b>Task:</b> {item["title"]}
+                                  <div style={{marginTop:"5px"}}>
+                                      <button type="button" className="ml-3 mb-1 btn btn-dismiss" data-dismiss="toast"
+                                              onClick={() => this.handleDelete(item["id"], item["flag"])} style={{fontWeight:"bold"}}>
+                                          <span aria-hidden="true">Done</span>
+                                      </button>
+                                      <button type="button" className="ml-3 mb-1 btn btn-primary" data-dismiss="toast"
+                                              onClick={() => this.handleChange(item["id"])} style={{fontWeight:"bold"}}>
+                                          <span aria-hidden="true">Change</span>
+                                      </button>
+                                  </div>
+                              </div>
+                          </div>
+                      )
+                  )}
+              </div>
+          </div>
           <div className="main align-items-center" style={{offset:"50px"}}>
               <br/>
           <div className="vertical-nav shadow-lg" id="sidebar" style={{whiteSpace: "nowrap", overflow:"auto"}}>

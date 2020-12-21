@@ -96,3 +96,17 @@ input {
 .deadline b {
   display: none;
 }
+
+.btn-dismiss {
+  background-color: #bfbfbf !important;
+}
+
+.btn-dismiss:hover {
+  background-color: #929191 !important;
+}
+
+.toast-header {
+  background-image: image_url("main.png");
+  background-size: cover;
+  color: white !important;
+}

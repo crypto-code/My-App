@@ -9,6 +9,8 @@ class Add extends React.Component {
     }
     this.func = this.func.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+
+
   }
   getDate() {
     let today = new Date();
@@ -92,6 +94,21 @@ class Add extends React.Component {
       date = document.getElementById("datetime").value.split("T")[0];
     } else {
       date = document.getElementById("date").value;
+    }
+    let today = new Date();
+    let days = new Date(date) - today;
+    if (datetime != null){
+      days = new Date(datetime) - today;
+    }
+    if(days < 0){
+      console.log(days)
+      let error = document.getElementById("error_list");
+      error.innerHTML = "";
+      let li = document.createElement("li");
+      li.innerText = "Deadline: Date has passed";
+      error.appendChild(li);
+      document.getElementById("error").hidden = false
+      return
     }
     let task = {user_id: user_id, title: title, description: description, deadline: date, time: datetime, flag: flag}
     this.handleCreate(task)
