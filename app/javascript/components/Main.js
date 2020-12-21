@@ -8,13 +8,11 @@ class Main extends React.Component {
             id: 0,
             title: "",
             flag: "",
-
         }
         this.confirmDelete = this.confirmDelete.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
 
-        Object.keys(this.props.tasks).map((key, index) => {
-            this.props.tasks[key].map((item) => {
+            this.props.alerts.map((item) => {
                 let today = new Date();
                 let dur;
                 if (item["time"] != null){
@@ -27,9 +25,7 @@ class Main extends React.Component {
                 setTimeout(function() {
                     $("#" + item["id"] + "-alert").toast('show');
                 }, dur);
-                console.log(JSON.stringify(item["time"])+ dur)
             })
-        })
     }
 
     handleDelete(id, flag) {
@@ -70,9 +66,8 @@ class Main extends React.Component {
     return (
       <React.Fragment>
           <div aria-live="polite" aria-atomic="true" style={{position:"relative", zIndex:"3000000"}}>
-              <div style={{position:"absolute", top:"60px", right:"20px", width:"fit-content"}}>
-                  {Object.keys(this.props.tasks).map((key, index) =>
-                      this.props.tasks[key].map((item) =>
+              <div style={{position:"absolute", top:"60px", right:"20px", width:"fit-content"}} id="alert-container">
+                  {this.props.alerts.map((item) =>
                           <div key={item["id"]} id={item["id"]+"-alert"} className="toast shadow-lg" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false"
                                style={{width:"20rem"}}>
                               <div className="toast-header" style={{fontSize:"larger"}}>
@@ -96,8 +91,7 @@ class Main extends React.Component {
                                   </div>
                               </div>
                           </div>
-                      )
-                  )}
+                      )}
               </div>
           </div>
           <div className="main align-items-center" style={{offset:"50px"}}>
@@ -180,6 +174,7 @@ class Main extends React.Component {
 
 Main.propTypes = {
     tasks: PropTypes.object,
-    flags: PropTypes.array
+    flags: PropTypes.array,
+    alerts: PropTypes.array
 };
 export default Main

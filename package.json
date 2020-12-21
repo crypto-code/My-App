@@ -11,11 +11,14 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-html-parser": "^2.0.2",
     "react_ujs": "^2.6.1",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {
+    "html-react-parser": "^1.0.0",
+    "node-html-parser": "^2.0.0",
     "webpack-dev-server": "^3.11.0"
   }
 }

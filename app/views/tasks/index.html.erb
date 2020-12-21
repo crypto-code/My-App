@@ -27,6 +27,6 @@
   <body class="text-center" id="body">
   <%=react_component("Title", {menuItems:[
     {id:"1", name:"LOGOUT", url: url_for(controller: "welcome", action: "logout"), image: true, img: asset_path("logout.png")}], head: false})%>
-    <%=react_component("Main", {tasks: @tasks  , flags: @flags}) %>
+    <%=react_component("Main", {tasks: @tasks  , flags: @flags, alerts: @alerts}) %>
   </body>
 </html>
