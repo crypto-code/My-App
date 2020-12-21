@@ -49,4 +49,8 @@ In the index page, each task has three option Show, Edit and Delete. The former 
 
 <h1 align="center">
 THE END
+<<<<<<< HEAD
 </h1>
+=======
+</h1>
+>>>>>>> 1703b973d5443b119ee4a0b6b8546edd5f38ff60
