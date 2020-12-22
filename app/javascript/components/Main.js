@@ -22,9 +22,11 @@ class Main extends React.Component {
                     let time = "08:00:00"
                     dur = new Date(item["deadline"]+"T"+time) - today;
                 }
-                setTimeout(function() {
-                    $("#" + item["id"] + "-alert").toast('show');
-                }, dur);
+                if (dur < 2147483640){
+                    setTimeout(function() {
+                        $("#" + item["id"] + "-alert").toast('show');
+                    }, dur);
+                }
             })
     }
 
