@@ -35,8 +35,8 @@ On entry you are greeted by a welcome screen which scrolls down to reveal a logi
 
 ![Login and SignUp](assets/Login&Signup.png)
 
-Once logged in you are redirected to the index page where all tasks are shown grouped by flags and ordered by their deadlines. You can view the deadline by hovering over the task title and you can directly navigate to a flag by clicking on the appropriate flag shown on the sidebar.
-
+Once logged in you are redirected to the index page where all tasks are shown grouped by flags and ordered by their deadlines. You can view the deadline by hovering over the task title and you can use the sidebar to directly navigate to a flag. A notification is also shown when the deadline has passed. 
+You can either click done and it will delete the task, or you can choose the click the change button that takes you to the edit page to modify the task deadline.
 ![index](assets/index.png)
 
 Click the “+” sign beside the title to add a new task. You will be taken to another page where you can enter all the necessary info, description and time are optional. The title must be unique with minimum 5 characters and a maximum of 60 characters. The flag should have a minimum of 2 characters and the description if present should have minimum of 10 characters.
@@ -49,8 +49,4 @@ In the index page, each task has three option Show, Edit and Delete. The former 
 
 <h1 align="center">
 THE END
-<<<<<<< HEAD
 </h1>
-=======
-</h1>
->>>>>>> 1703b973d5443b119ee4a0b6b8546edd5f38ff60
