@@ -89,14 +89,6 @@ input {
   transition: all 0.4s;
 }
 
-.deadline:hover b {
-  display: inline-block;
-}
-
-.deadline b {
-  display: none;
-}
-
 .btn-dismiss {
   background-color: #bfbfbf !important;
 }
@@ -109,4 +101,8 @@ input {
   background-image: image_url("main.png");
   background-size: cover;
   color: white !important;
+}
+.tooltip > .tooltip-inner {
+  font-size: x-large;
+  background: #4400ff;
 }

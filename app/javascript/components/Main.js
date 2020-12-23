@@ -131,7 +131,13 @@ class Main extends React.Component {
                           {this.props.tasks[key].map((item) =>
                               <li id={item["id"]} key={item["id"]} className="list-group-item d-flex justify-content-between align-items-center" style={{width:"60rem", fontSize:"x-large"}}>
                                   <div style={{whiteSpace: "initial", wordWrap: "break-word", width:"30rem", textAlign:"left"}} className="deadline">
-                                      {item["title"]}     <b style={{marginLeft:"60px"}}>[{item["deadline"]}]</b>
+                                      {item["time"] !== null
+                                          ? <div data-toggle="tooltip" data-placement="left"
+                                                 title={item["deadline"] + " " +  item["time"].split("T")[1].split(":")[0] + ":" + item["time"].split("T")[1].split(":")[1]}
+                                                 style={{width:"30rem", paddingRight:"20px", whiteSpace: "initial", wordWrap: "break-word", textAlign:"left"}}>{item["title"]}</div>
+                                          : <div data-toggle="tooltip" data-placement="left" title={item["deadline"]}
+                                                 style={{width:"30rem", paddingRight:"20px", whiteSpace: "initial", wordWrap: "break-word", textAlign:"left"}}>{item["title"]}</div>
+                                      }
                                   </div>
                                   <span style={{color:"white"}}>
                                     <a className="badge badge-primary badge-pill" style={{marginInline:"5px"}} href={"tasks/" + item["id"]}>Show</a>
