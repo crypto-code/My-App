@@ -19,7 +19,7 @@ class Main extends React.Component {
                     let time = item["time"].split("T")[1].split(".")[0]
                     dur = new Date(item["deadline"]+"T"+time) - today;
                 } else {
-                    let time = "08:00:00"
+                    let time = "06:00:00"
                     dur = new Date(item["deadline"]+"T"+time) - today;
                 }
                 if (dur < 2147483640){
