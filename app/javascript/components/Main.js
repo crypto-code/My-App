@@ -80,7 +80,7 @@ class Main extends React.Component {
                                   <span className="mr-auto" style={{fontWeight:"bolder"}}>Task Alert</span>
                                   {item["time"] != null
                                   ? <span className="toast-time">{item["deadline"] + " " + item["time"].split("T")[1].split(".")[0]}</span>
-                                  : <span className="toast-time">{item["deadline"] + " 8:00:00"}</span>}
+                                  : <span className="toast-time">{item["deadline"] + " 6:00:00"}</span>}
                               </div>
                               <div className="toast-body" style={{fontSize:"large"}}>
                                   Time's Up <br/>
